@@ -7,11 +7,41 @@ def searchInsert(nums, target):
         if nums[num] == target:
             index = num
             break
-        else:
-            if nums[num] <= target:
-                index = num + 1
+        elif nums[num] <= target:
+            index = num + 1
     return index
 
 
+def binary_search(nums, target):
+    begin = 0
+    end = len(nums) - 1
+    while (len(nums) > begin) and (end != 0) and (begin != end):
+        mid = (begin + end) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            begin += 1
+        else:
+            end -= 1
+    return begin
+
+
+target = 555
+nums = [1,3,5]
+
+
+def binary_rec(begin,end):
+    mid = (begin + end) // 2
+    if len(nums) == begin or end == 0 or begin == end:
+        index = begin
+    elif nums[mid] == target:
+        index = mid
+    elif nums[mid] < target:
+        index = binary_rec(begin + 1,end)
+    else:
+        index = binary_rec(begin, end - 1)
+    return index
+
 if __name__ == '__main__':
-    print(searchInsert([1,3,5,6], 0))
+    # print(binary_search([1,3,5,6], 520))
+    print(binary_rec(0, len(nums)))
