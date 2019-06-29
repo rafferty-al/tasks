@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/robot-return-to-origin
+# Runtime: 64 ms, faster than 57.97% of Python3 online submissions for Robot Return to Origin.
 
 def judgeCircle(moves):
     x, y = 0, 0
